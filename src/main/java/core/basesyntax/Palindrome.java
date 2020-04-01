@@ -13,13 +13,10 @@ public class Palindrome {
      * <p>Результат: true</p>
      */
     public boolean isPalindrome(String text) {
-        String noSymbols = text.toLowerCase().replaceAll("[^a-z[0-9]]", "");
         StringBuilder forward = new StringBuilder();
+        forward.append(text.toLowerCase().replaceAll("[^a-z^[0-9]]", ""));
         StringBuilder reverse = new StringBuilder();
-        for (int i = 0; i < noSymbols.length(); i++) {
-            forward.append(noSymbols.charAt(i));
-            reverse.append(noSymbols.charAt(noSymbols.length() - 1 - i));
-        }
+        reverse.append(forward).reverse();
         return forward.toString().equals(reverse.toString());
     }
 }
